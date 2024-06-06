@@ -1,17 +1,17 @@
 function photographerTemplate(data) {
-    const { name, portrait } = data;
+  const { name, portrait } = data;
+  const picture = `data/images/photos/photographersID/${portrait}`;
 
-    const picture = `assets/photographers/${portrait}`;
+  const getUserCardDOM = () => {
+    const article = document.createElement("article");
 
-    function getUserCardDOM() {
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-        article.appendChild(img);
-        article.appendChild(h2);
-        return (article);
-    }
-    return { name, picture, getUserCardDOM }
+    article.innerHTML = `
+    <img src= "${picture}" alt= "Photo de ${name}">
+    <h2>${name}</h2>
+    `;
+
+    return article;
+  };
+
+  return { getUserCardDOM };
 }
