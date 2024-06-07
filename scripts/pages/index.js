@@ -1,26 +1,35 @@
-async function getPhotographers() {
-  const response = await fetch("/data/photographers.json");
-  const photographers = await response.json();
+import { photographerFactory } from "../factory/photographer.js";
 
-  return {
-    photographers: [...photographers.photographers],
-  };
+async function getPhotographers() {
+  try {
+    const response = await fetch("../../data/photographers.json");
+    const photographers = await response.json();
+
+    return {
+      photographers: photographers.photographers,
+    };
+  } catch (error) {
+    console.error("getPhotographers", error);
+    throw new Error("invalid JSON");
+  }
 }
 
-async function displayData(photographers) {
+function displayPhotographers(photographers) {
   const photographersSection = document.querySelector(".photographer-section");
 
   photographers.forEach((photographer) => {
-    const photographerModel = photographerTemplate(photographer);
-    const userCardDOM = photographerModel.getUserCardDOM();
-    photographersSection.appendChild(userCardDOM);
+    const { getUserCardDOM } = photographerFactory();
+    photographersSection.appendChild(getUserCardDOM(photographer));
   });
 }
 
 async function init() {
-  // Récupère les datas des photographes
-  const { photographers } = await getPhotographers();
-  displayData(photographers);
+  try {
+    const { photographers } = await getPhotographers();
+    displayPhotographers(photographers);
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 init();

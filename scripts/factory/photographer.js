@@ -1,13 +1,12 @@
-function photographerTemplate(data) {
-  console.log(data);
-  const { name, id, city, country, tagline, price, portrait } = data;
-  const picture = `data/images/photos/photographersID/${portrait}`;
+export function photographerFactory() {
+  const getUserCardDOM = (data) => {
+    const { name, id, city, country, tagline, price, portrait } = data;
+    const picture = `../../data/images/photos/photographersID/${portrait}`;
 
-  const getUserCardDOM = () => {
     const article = document.createElement("article");
 
     article.innerHTML = `
-    <a href="photographer.html?id=${id}"><img src= "${picture}" alt= "${name}"></a>
+    <a href="photographer.html?id=${id}"><img src="${picture}" alt="${name}"></a>
     <a href=""><h2>${name}</h2></a>
     
     <p class="photographer-section__location">${city}, ${country}</p>
