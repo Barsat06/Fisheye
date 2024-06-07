@@ -1,6 +1,6 @@
 async function getPhotographers() {
-  const reponse = await fetch("/data/photographers.json");
-  const photographers = await reponse.json();
+  const response = await fetch("/data/photographers.json");
+  const photographers = await response.json();
 
   return {
     photographers: [...photographers.photographers],
@@ -8,7 +8,7 @@ async function getPhotographers() {
 }
 
 async function displayData(photographers) {
-  const photographersSection = document.querySelector(".photographer_section");
+  const photographersSection = document.querySelector(".photographer-section");
 
   photographers.forEach((photographer) => {
     const photographerModel = photographerTemplate(photographer);
