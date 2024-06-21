@@ -1,14 +1,22 @@
-let params = new URLSearchParams(location.search);
-let id = params.get("id");
+import { photographerFactory } from "../factory/photographer.js";
+import { getPhotographerByID } from "../services/photographers.js";
 
-async function monTets() {
-  const response = await fetch("../../data/photographers.json");
-  const data = await response.json();
-  const photographers = data.photographers;
-  const photographer = photographers.find(
-    (photographer) => photographer.id == id
-  );
-  alert(photographer.name);
+function displayPhotographerHeader(photograph) {
+  const photographHeader = document.querySelector(".photograph-header");
+  const { getPhotographerHeader } = photographerFactory(photograph);
+
+  photographHeader.appendChild(getPhotographerHeader());
 }
 
-monTets();
+async function init() {
+  try {
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
+    const { photographer } = await getPhotographerByID(id);
+    displayPhotographerHeader(photographer);
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+init();

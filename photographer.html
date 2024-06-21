@@ -8,7 +8,9 @@
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
-    <title>Fisheye - photographe</title>
+    <title>Fisheye - Photographe</title>
+    <script defer src="/scripts/pages/photographer.js" type="module"></script>
+    <script defer src="/scripts/utils/contactForm.js"></script>
   </head>
   <body>
     <header>
@@ -20,11 +22,8 @@
       /></a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
-        </button>
-      </div>
+      <section class="photograph-header"></section>
+      <section class="photograph-main"></section>
     </main>
     <div id="contact_modal">
       <div class="modal">
@@ -36,12 +35,16 @@
           <div>
             <label>Prénom</label>
             <input />
+            <label>Nom</label>
+            <input />
+            <label>Email</label>
+            <input />
+            <label>Votre message</label>
+            <input />
           </div>
           <button class="contact_button">Envoyer</button>
         </form>
       </div>
     </div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

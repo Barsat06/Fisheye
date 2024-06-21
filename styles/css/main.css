@@ -12,6 +12,7 @@ h1, h2, h3, h4, p, ul {
   margin: 0px;
   padding: 0px;
   font-size: 1rem;
+  font-weight: normal;
 }
 
 li {
@@ -119,6 +120,39 @@ h1 {
   background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.photograph-header header {
+  height: 100%;
+  width: 100%;
+  margin: 0 50px;
+}
+.photograph-header header h1 {
+  font-size: 4rem;
+  color: #d3573c;
+  margin-right: 0;
+  margin-bottom: 27px;
+}
+.photograph-header header img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.photograph-header__location {
+  font-size: 1.5rem;
+  color: #901c1c;
+  margin-bottom: 31px;
+}
+.photograph-header__tagline {
+  font-size: 1.125rem;
+  color: #525252;
 }
 
 .contact_button {

@@ -6,6 +6,40 @@
   background-color: $grey-bg;
   height: 300px;
   margin: 0 100px;
+  display: flex;
+  align-items: center;
+  
+  header {
+    height: 100%;
+    width: 100%;
+    margin: 0 50px;
+    
+    h1 {
+      font-size: 4rem;
+      color: $primary-txt;
+      margin-right: 0;
+      margin-bottom: 27px;
+    }
+
+    img {
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  &__location {
+    font-size: 1.5rem;
+    color: $secondary-txt;
+    margin-bottom: 31px;
+  }
+
+  &__tagline {
+    font-size: 1.125rem;
+    color: $grey-txt;
+  }
+
 }
 
 .contact_button {
