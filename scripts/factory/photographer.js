@@ -31,7 +31,7 @@ export function photographerFactory(data) {
           <p class="photograph-header__tagline">${tagline}</p>
         </div>
         
-        <button class="contact_button" onclick="displayModal()">
+        <button class="contact_button" onclick="displayModal()" alt="Contact Me">
           Contactez-moi
         </button>
         
@@ -55,5 +55,27 @@ export function photographerFactory(data) {
     return divAllMedia;
   };
 
-  return { getUserCardDOM, getPhotographerHeader, getPhotographerMedia };
+  const getLikesAndPrice = async () => {
+    const asideLikesPrice = document.createElement("aside");
+    const media = await getOnePhotographerMedia(id);
+    let totalLikes = 0;
+
+    media.forEach((media) => {
+      totalLikes = totalLikes + media.likes;
+    });
+
+    asideLikesPrice.innerHTML = `
+    <p>${totalLikes} <i class="fa-solid fa-heart"></i></p>
+    <p>${price}€ / jour</p>
+    `;
+
+    return asideLikesPrice;
+  };
+
+  return {
+    getUserCardDOM,
+    getPhotographerHeader,
+    getPhotographerMedia,
+    getLikesAndPrice,
+  };
 }

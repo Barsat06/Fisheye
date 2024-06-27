@@ -10,10 +10,13 @@ function displayPhotographerHeader(photograph) {
 
 async function displayPhotographerMedia(photograph) {
   const mediaSection = document.querySelector(".photograph-main");
-  const { getPhotographerMedia } = photographerFactory(photograph);
-  const allMedia = await getPhotographerMedia()
+  const { getPhotographerMedia, getLikesAndPrice } =
+    photographerFactory(photograph);
+  const allMedia = await getPhotographerMedia();
+  const likesAndPrice = await getLikesAndPrice();
 
   mediaSection.appendChild(allMedia);
+  mediaSection.appendChild(likesAndPrice);
 }
 
 async function init() {
