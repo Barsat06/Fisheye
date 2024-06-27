@@ -1,3 +1,6 @@
+import { getOnePhotographerMedia } from "../services/photographers.js";
+import { mediaFactory } from "./media.js";
+
 export function photographerFactory(data) {
   const { name, id, city, country, tagline, price, portrait } = data;
   const picture = `../../data/images/photos/photographersID/${portrait}`;
@@ -18,9 +21,10 @@ export function photographerFactory(data) {
   };
 
   const getPhotographerHeader = () => {
-    const header = document.createElement("header");
+    const banner = document.createElement("div");
+    banner.className = "banner";
 
-    header.innerHTML = `
+    banner.innerHTML = `
         <div>
           <h1>${name}</h1>
           <p class="photograph-header__location">${city}, ${country}</p>
@@ -34,8 +38,22 @@ export function photographerFactory(data) {
         <img src="${picture}" alt="${name}">
         `;
 
-    return header;
+    return banner;
   };
 
-  return { getUserCardDOM, getPhotographerHeader };
+  const getPhotographerMedia = async () => {
+    const divAllMedia = document.createElement("div");
+    divAllMedia.className = "divAllMedia";
+
+    const media = await getOnePhotographerMedia(id);
+
+    media.forEach((media) => {
+      const { getMediaDOM, getMediaTypeDOM } = mediaFactory(media);
+      divAllMedia.appendChild(getMediaDOM(getMediaTypeDOM(name)));
+    });
+
+    return divAllMedia;
+  };
+
+  return { getUserCardDOM, getPhotographerHeader, getPhotographerMedia };
 }

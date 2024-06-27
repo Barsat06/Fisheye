@@ -26,7 +26,24 @@ export async function getPhotographerByID(id) {
       photographer,
     };
   } catch (error) {
-    console.error("getPhotographers", error);
+    console.error("getPhotographersByID", error);
+    throw new Error("invalid JSON");
+  }
+}
+
+export async function getOnePhotographerMedia(id) {
+  try {
+    const response = await fetch("../../data/photographers.json");
+    const data = await response.json();
+    const allPhotographersMedia = data.media;
+
+    const onePhotographerMedia = allPhotographersMedia.filter(
+      (media) => media.photographerId == id
+    );
+
+    return onePhotographerMedia;
+  } catch (error) {
+    console.error("getOnePhotographerMedia", error);
     throw new Error("invalid JSON");
   }
 }

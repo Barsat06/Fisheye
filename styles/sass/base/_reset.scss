@@ -3,8 +3,13 @@
 }
 
 html, body{
-    margin: 0px;
+    margin: auto;
     padding: 0px;
+    width: 1240px;
+    min-width: 375px;
+    display: flex;
+    flex-direction: column;
+    font-family: "DM Sans", sans-serif;
 }
 
 h1, h2, h3, h4, p, ul{
@@ -26,10 +31,4 @@ a{
 img{
     display: block;
     object-fit: cover;
-}
-
-body{
-    font-family: "DM Sans", sans-serif;
-    min-width: 375px;
-    margin: auto;
 }
