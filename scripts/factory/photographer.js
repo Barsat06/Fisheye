@@ -1,11 +1,13 @@
 import { getOnePhotographerMedia } from "../services/photographers.js";
 import { mediaFactory } from "./media.js";
 
+// Factory function to create photographer-related DOM elements
 export function photographerFactory(data) {
   const { name, id, city, country, tagline, price, portrait } = data;
   const picture = `../../data/images/photos/photographersID/${portrait}`;
 
-  const getUserCardDOM = () => {
+  // Create and return a photographer card DOM element
+  const getPhotographerCardDOM = () => {
     const article = document.createElement("article");
 
     article.innerHTML = `
@@ -20,18 +22,19 @@ export function photographerFactory(data) {
     return article;
   };
 
-  const getPhotographerHeader = () => {
+  // Create and return the photographer's banner DOM element
+  const getPhotographerBanner = () => {
     const banner = document.createElement("div");
     banner.className = "banner";
 
     banner.innerHTML = `
         <div>
           <h1>${name}</h1>
-          <p class="photograph-header__location">${city}, ${country}</p>
-          <p class="photograph-header__tagline">${tagline}</p>
+          <p class="photograph-banner__location">${city}, ${country}</p>
+          <p class="photograph-banner__tagline">${tagline}</p>
         </div>
         
-        <button class="contact_button" onclick="displayModal()" alt="Contact Me">
+        <button id="openModalBtn" class="contact_button" onclick="displayModal()" alt="Contact Me">
           Contactez-moi
         </button>
         
@@ -41,6 +44,7 @@ export function photographerFactory(data) {
     return banner;
   };
 
+  // Fetch and return photographer's media DOM elements
   const getPhotographerMedia = async () => {
     const divAllMedia = document.createElement("div");
     divAllMedia.className = "divAllMedia";
@@ -55,6 +59,7 @@ export function photographerFactory(data) {
     return divAllMedia;
   };
 
+  // Calculate and return likes and price
   const getLikesAndPrice = async () => {
     const asideLikesPrice = document.createElement("aside");
     const media = await getOnePhotographerMedia(id);
@@ -73,8 +78,8 @@ export function photographerFactory(data) {
   };
 
   return {
-    getUserCardDOM,
-    getPhotographerHeader,
+    getPhotographerCardDOM,
+    getPhotographerBanner,
     getPhotographerMedia,
     getLikesAndPrice,
   };

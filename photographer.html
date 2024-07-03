@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="styles/css/main.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
@@ -16,40 +16,60 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
-    <header>
-      <a href="/index.html"
-        ><img
-          src="assets/images/logo.webp"
-          class="logo"
-          alt="Fisheye home page"
-      /></a>
-    </header>
-    <main id="main">
-      <section class="photograph-header"></section>
-      <section class="photograph-main"></section>
-    </main>
+  <body id="body">
+    <div id="content">
+      <header>
+        <!-- Logo linked to the homepage -->
+        <a href="/index.html"
+          ><img
+            src="assets/images/logo.webp"
+            class="logo"
+            alt="Fisheye home page"
+        /></a>
+      </header>
+      <main id="main">
+        <!-- Sections for photographer's banner and main content -->
+        <section class="photograph-banner"></section>
+        <section class="photograph-main"></section>
 
-    <div id="contact_modal">
-      <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-        <form>
+        <!-- Contact form modal -->
+        <div id="contact_modal">
           <div>
-            <label>Prénom</label>
-            <input />
-            <label>Nom</label>
-            <input />
-            <label>Email</label>
-            <input />
-            <label>Votre message</label>
-            <input />
+            <h1 id="formTitle" tabindex="0"></h1>
+            <input
+              id="closeModalBtn"
+              type="image"
+              src="assets/icons/close.svg"
+              alt="Close contact form"
+              onclick="closeModal()"
+            />
           </div>
-          <button class="contact_button">Envoyer</button>
-        </form>
-      </div>
+          <form id="contactForm" name="contactForm">
+            <div role="group" aria-labelledby="coordonnees">
+              <!-- Input fields for first name, last name, and email -->
+              <div>
+                <label for="firsName">Prénom</label>
+                <input type="text" name="firsName" id="firsName" required />
+              </div>
+              <div>
+                <label for="lastName">Nom</label>
+                <input type="text" name="lastName" id="lastName" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required />
+              </div>
+            </div>
+
+            <!-- Textarea for the message and submit button -->
+            <div>
+              <label for="message">Votre message</label>
+              <textarea name="message" id="message" required></textarea>
+            </div>
+            <button id="submit" type="submit">Envoyer</button>
+          </form>
+        </div>
+      </main>
     </div>
   </body>
 </html>

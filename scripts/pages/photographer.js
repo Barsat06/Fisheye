@@ -1,13 +1,16 @@
 import { photographerFactory } from "../factory/photographer.js";
 import { getPhotographerByID } from "../services/photographers.js";
+import { getContactForm } from "../services/contactForm.js";
 
-function displayPhotographerHeader(photograph) {
-  const photographHeader = document.querySelector(".photograph-header");
-  const { getPhotographerHeader } = photographerFactory(photograph);
+// Display photographer's banner section
+function displayPhotographerBanner(photograph) {
+  const photographBanner = document.querySelector(".photograph-banner");
+  const { getPhotographerBanner } = photographerFactory(photograph);
 
-  photographHeader.appendChild(getPhotographerHeader());
+  photographBanner.appendChild(getPhotographerBanner());
 }
 
+// Display photographer's media and likes/price
 async function displayPhotographerMedia(photograph) {
   const mediaSection = document.querySelector(".photograph-main");
   const { getPhotographerMedia, getLikesAndPrice } =
@@ -21,13 +24,22 @@ async function displayPhotographerMedia(photograph) {
 
 async function init() {
   try {
+    // Get photographer ID from query parameters
     const params = new URLSearchParams(location.search);
     const id = params.get("id");
+
+    // Fetch photographer data by ID
     const { photographer } = await getPhotographerByID(id);
-    displayPhotographerHeader(photographer);
+
+    // Display photographer's banner and media
+    displayPhotographerBanner(photographer);
     displayPhotographerMedia(photographer);
+
+    // Set up the contact form
+    getContactForm(photographer.name);
   } catch (error) {
-    throw new Error(error);
+    // Log errors to the console
+    console.error(error);
   }
 }
 
