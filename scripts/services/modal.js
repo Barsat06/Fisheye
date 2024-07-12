@@ -7,7 +7,7 @@ export function Modal(content, modalType) {
   ${content.outerHTML}
   <label for="closeModalBtn" hidden>Close</label>
   <button id="closeModalBtn" class="closeModalBtn" type="button">
-    <img src="../../assets/icons/close.svg" alt="Close contact form">
+    <img src="../../assets/icons/close.svg" alt="Close modal">
   </button>
 
   `;
@@ -99,7 +99,13 @@ export function Modal(content, modalType) {
       closeModal();
     });
   }
-  if (modalType === "lightbox") {
+  if (modalType === "lightBox") {
+    const closeBtn = document.getElementById('closeModalBtn')
+    closeBtn.className = "closeLightBox"
+    const closeImg = document.querySelector('#closeModalBtn img')
+    closeImg.src = "../../assets/icons/closeRed.svg"
+    const whiteBg = document.querySelector('.backgroundModal')
+    whiteBg.className = 'backgroundModal whiteBg'
   }
 
   return main;

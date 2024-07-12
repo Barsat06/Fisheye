@@ -6,23 +6,9 @@ export function MediaFactory(media) {
     let typeDOM;
 
     if (media.image) {
-      typeDOM =
-        "<img src=../../data/images/photos/" +
-        firstName +
-        "/" +
-        media.image +
-        " alt='" +
-        media.title +
-        "'>";
+      typeDOM = `<img src=../../data/images/photos/${firstName}/${media.image} alt="${media.title}" >`;
     } else if (media.video) {
-      typeDOM =
-        "<video> <source src=../../data/images/photos/" +
-        firstName +
-        "/" +
-        media.video +
-        " type='video/mp4' /> <p>" +
-        media.title +
-        "</p> </video>";
+      typeDOM = `<video controls> <source src=../../data/images/photos/${firstName}/${media.video} type='video/mp4'/> <p>${media.title}</p> </video>`;
     } else {
       console.log("Le media n'est pas reconnu (id:" + media.id + ")");
     }
@@ -39,7 +25,8 @@ export function MediaFactory(media) {
 
     const articleMedia = document.createElement("article");
     articleMedia.innerHTML = `
-    ${typeDOM}
+    <button>${typeDOM}</button>
+    
     <div class=media>
       <p class=title>${media.title}</p>
       <p class=likes aria-label="likes">${media.likes}<i class="fa-solid fa-heart"></i></p>
@@ -49,5 +36,5 @@ export function MediaFactory(media) {
     return articleMedia;
   };
 
-  return { MediaDOM };
+  return { MediaDOM, MediaType };
 }

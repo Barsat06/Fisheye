@@ -44,10 +44,17 @@ a {
   color: black;
 }
 
-img {
+img, video {
   display: block;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
 }
 
 header {
@@ -184,7 +191,8 @@ h1 {
   gap: 30px 95px;
 }
 .photograph-main .divAllMedia img,
-.photograph-main .divAllMedia video {
+.photograph-main .divAllMedia video,
+.photograph-main .divAllMedia button {
   height: 300px;
   width: 350px;
 }
@@ -259,12 +267,9 @@ h1 {
           transform: translate(-50%, -50%);
 }
 .modal .closeModalBtn {
-  cursor: pointer;
   position: inherit;
   right: 35px;
   top: 35px;
-  border: none;
-  background: none;
 }
 
 .contact_modal {
@@ -343,4 +348,47 @@ form button {
   background-color: rgba(196, 196, 196, 0.4);
   width: 100%;
   height: 100%;
+}
+.backgroundModal.whiteBg {
+  background-color: white;
+}
+
+.bigPicture div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 35px;
+}
+.bigPicture div #prevPicture {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.bigPicture div .arrow,
+.bigPicture div .arrow img {
+  width: 30px;
+  height: 50px;
+}
+.bigPicture div img,
+.bigPicture div video {
+  width: 1050px;
+  height: 900px;
+}
+.bigPicture p {
+  position: relative;
+  left: 65px;
+  top: 17px;
+  font-size: 1.5rem;
+  color: #901c1c;
+}
+
+.closeLightBox {
+  position: relative;
+  left: 1150px;
+  top: -917px;
 }/*# sourceMappingURL=main.css.map */

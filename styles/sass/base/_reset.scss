@@ -38,7 +38,14 @@ a {
   color: black;
 }
 
-img {
+img,video {
   display: block;
   object-fit: cover;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
 }
