@@ -1,6 +1,6 @@
-import { Modal } from "../services/modal.js";
+import { Modal } from "./modal.js";
 
-export function ContactForm(name) {
+export function ContactFormModal(name) {
   const contactForm = document.createElement("div");
   contactForm.className = "contact_modal";
 

@@ -1,6 +1,6 @@
 import { getMediaByPhotographerId } from "../services/photographers.js";
 import { MediaFactory } from "./media.js";
-import { ContactForm } from "../components/contactForm.js";
+import { ContactFormModal } from "../components/contactForm.js";
 import { lightBox } from "../components/lightBox.js";
 
 // Factory function to create photographer-related DOM elements
@@ -44,7 +44,7 @@ export function PhotographerFactory(data) {
         `;
 
     banner.querySelector("#contactFormBtn").addEventListener("click", () => {
-      ContactForm(name);
+      ContactFormModal(name);
     });
 
     return banner;

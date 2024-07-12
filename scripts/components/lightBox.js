@@ -1,5 +1,5 @@
 import { MediaFactory } from "../factory/media.js";
-import { Modal } from "../services/modal.js";
+import { Modal } from "./modal.js";
 
 export function lightBox(allMedia, media, name) {
   const actualMedia = media.id;
@@ -15,7 +15,7 @@ export function lightBox(allMedia, media, name) {
     }
   });
 
-  let { MediaType } = MediaFactory(allMedia[actualIndex]);
+  const { MediaType } = MediaFactory(allMedia[actualIndex]);
 
   const BigPicture = document.createElement("div");
   BigPicture.className = "bigPicture";
@@ -31,8 +31,8 @@ export function lightBox(allMedia, media, name) {
 
   Modal(BigPicture, "lightBox");
 
-  const test = document.querySelector(".bigPicture");
-  test.addEventListener("keydown", (e) => {
+  const lightBoxContainer = document.querySelector(".bigPicture");
+  lightBoxContainer.addEventListener("keydown", (e) => {
     let isArrowLeftPressed = e.key === "ArrowLeft";
     let isArrowRightPressed = e.key === "ArrowRight";
 
@@ -51,7 +51,7 @@ export function lightBox(allMedia, media, name) {
       actualIndex--;
     }
 
-    let { MediaType } = MediaFactory(allMedia[actualIndex]);
+    const { MediaType } = MediaFactory(allMedia[actualIndex]);
     const updateMedia = document.getElementById("mainMedia");
     updateMedia.innerHTML = MediaType(name);
     const updateTitle = document.getElementById("mediaTitle");
@@ -65,7 +65,7 @@ export function lightBox(allMedia, media, name) {
       actualIndex++;
     }
 
-    let { MediaType } = MediaFactory(allMedia[actualIndex]);
+    const { MediaType } = MediaFactory(allMedia[actualIndex]);
     const updateMedia = document.getElementById("mainMedia");
     updateMedia.innerHTML = MediaType(name);
     const updateTitle = document.getElementById("mediaTitle");

@@ -9,7 +9,6 @@ export function Modal(content, modalType) {
   <button id="closeModalBtn" class="closeModalBtn" type="button">
     <img src="../../assets/icons/close.svg" alt="Close modal">
   </button>
-
   `;
 
   main.appendChild(modal);
