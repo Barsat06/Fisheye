@@ -37,7 +37,7 @@ export async function getPhotographerByID(id) {
 }
 
 // Fetch and return media for a specific photographer by ID
-export async function getOnePhotographerMedia(id) {
+export async function getMediaByPhotographerId(id) {
   try {
     const response = await fetch("../../data/photographers.json");
     const data = await response.json();
@@ -51,7 +51,7 @@ export async function getOnePhotographerMedia(id) {
     return onePhotographerMedia;
   } catch (error) {
     // Log any errors and throw a new error
-    console.error("getOnePhotographerMedia", error);
+    console.error("getMediaByPhotographerId", error);
     throw new Error("invalid JSON");
   }
 }

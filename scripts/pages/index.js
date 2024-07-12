@@ -1,4 +1,4 @@
-import { photographerFactory } from "../factory/photographer.js";
+import { PhotographerFactory } from "../factory/photographer.js";
 import { getPhotographers } from "../services/photographers.js";
 
 // Display photographer cards in the section
@@ -6,8 +6,8 @@ function displayPhotographers(photographers) {
   const photographersSection = document.querySelector(".photographer-section");
 
   photographers.forEach((photographer) => {
-    const { getPhotographerCardDOM } = photographerFactory(photographer);
-    photographersSection.appendChild(getPhotographerCardDOM());
+    const { PhotographerCard } = PhotographerFactory(photographer);
+    photographersSection.appendChild(PhotographerCard());
   });
 }
 

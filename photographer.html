@@ -10,7 +10,6 @@
     />
     <title>Fisheye - Photographe</title>
     <script defer src="/scripts/pages/photographer.js" type="module"></script>
-    <script defer src="/scripts/utils/contactForm.js"></script>
     <script
       src="https://kit.fontawesome.com/0ed4a2e364.js"
       crossorigin="anonymous"
@@ -30,46 +29,7 @@
       <main id="main">
         <!-- Sections for photographer's banner and main content -->
         <section class="photograph-banner"></section>
-        <section class="photograph-main"></section>
-
-        <!-- Contact form modal -->
-        <div id="contact_modal">
-          <div>
-            <h1 id="formTitle" tabindex="0"></h1>
-            <label for="closeModalBtn" hidden>Close</label>
-            <input
-              id="closeModalBtn"
-              type="image"
-              src="assets/icons/close.svg"
-              alt="Close contact form"
-              onclick="closeModal()"
-            />
-          </div>
-          <form id="contactForm" name="contactForm">
-            <div role="group" aria-labelledby="coordonnees">
-              <!-- Input fields for first name, last name, and email -->
-              <div>
-                <label for="firsName">Prénom</label>
-                <input type="text" name="firsName" id="firsName" required />
-              </div>
-              <div>
-                <label for="lastName">Nom</label>
-                <input type="text" name="lastName" id="lastName" required />
-              </div>
-              <div>
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" required />
-              </div>
-            </div>
-
-            <!-- Textarea for the message and submit button -->
-            <div>
-              <label for="message">Votre message</label>
-              <textarea name="message" id="message" required></textarea>
-            </div>
-            <button id="submit" type="submit">Envoyer</button>
-          </form>
-        </div>
+        <section class="photograph-main"></section>       
       </main>
     </div>
   </body>

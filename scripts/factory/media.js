@@ -1,7 +1,7 @@
 // Factory function to create media DOM elements
-export function mediaFactory(media) {
+export function MediaFactory(media) {
   // Generate HTML for media based on type
-  const getMediaTypeDOM = (name) => {
+  const MediaType = (name) => {
     const firstName = name.split(" ")[0];
     let typeDOM;
 
@@ -30,7 +30,13 @@ export function mediaFactory(media) {
     return typeDOM;
   };
   // Create a DOM element for each media
-  const getMediaDOM = (typeDOM) => {
+  const MediaDOM = (name) => {
+    const typeDOM = MediaType(name);
+
+    if (!typeDOM) {
+      return null;
+    }
+
     const articleMedia = document.createElement("article");
     articleMedia.innerHTML = `
     ${typeDOM}
@@ -43,5 +49,5 @@ export function mediaFactory(media) {
     return articleMedia;
   };
 
-  return { getMediaDOM, getMediaTypeDOM };
+  return { MediaDOM };
 }
