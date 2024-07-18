@@ -42,7 +42,31 @@
 .photograph-main {
   margin-bottom: 100px;
 
-  .divAllMedia {
+  #sorting {
+    margin: 10px 0px 25px 0px;
+
+    label {
+      font-size: 1.125em;
+      font-weight: bold;
+      margin-right: 25px;
+    }
+
+    select {
+      background-color: $primary-bg;
+      font-size: 1.125em;
+      font-weight: bold;
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+
+      option {
+        padding: 20px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  #divAllMedia {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px 95px;
@@ -63,7 +87,7 @@
         margin-right: 20px;
       }
 
-      .heart-button{
+      .heart-button {
         height: auto;
         width: auto;
       }

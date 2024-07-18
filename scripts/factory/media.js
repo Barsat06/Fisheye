@@ -25,7 +25,7 @@ export function MediaFactory(media) {
 
     const articleMedia = document.createElement("article");
     articleMedia.innerHTML = `
-    <button>${typeDOM}</button>
+    <button aria-label="Afficher en grand">${typeDOM}</button>
     
     <div class=media>
       <p class=title>${media.title}</p>
@@ -52,5 +52,17 @@ export function MediaFactory(media) {
     return articleMedia;
   };
 
-  return { MediaDOM, MediaType };
+  const getMediaOrder = (sort) => {
+    if (sort === undefined || sort === "popular") {
+      return media.sort((a, b) => b.likes - a.likes);
+    }
+    if (sort === "date") {
+      return media.sort((a, b) => b.date.localeCompare(a.date));
+    }
+    if (sort === "title") {
+      return media.sort((a, b) => a.title.localeCompare(b.title));
+    }
+  };
+
+  return { MediaDOM, MediaType, getMediaOrder };
 }

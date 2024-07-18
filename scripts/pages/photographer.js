@@ -14,8 +14,8 @@ async function displayPhotographerMedia(photograph) {
   const mediaSection = document.querySelector(".photograph-main");
   const { PhotographerGallery, PhotographerLikesAndPrice } =
     PhotographerFactory(photograph);
-  const allMedia = await PhotographerGallery();
-  mediaSection.appendChild(allMedia);
+  const MainContent = await PhotographerGallery();
+  mediaSection.appendChild(MainContent);
 
   const likesAndPrice = await PhotographerLikesAndPrice();
   mediaSection.appendChild(likesAndPrice);

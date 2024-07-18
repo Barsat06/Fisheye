@@ -185,18 +185,38 @@ h1 {
 .photograph-main {
   margin-bottom: 100px;
 }
-.photograph-main .divAllMedia {
+.photograph-main #sorting {
+  margin: 10px 0px 25px 0px;
+}
+.photograph-main #sorting label {
+  font-size: 1.125em;
+  font-weight: bold;
+  margin-right: 25px;
+}
+.photograph-main #sorting select {
+  background-color: #901c1c;
+  font-size: 1.125em;
+  font-weight: bold;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+.photograph-main #sorting select option {
+  padding: 20px;
+  font-weight: bold;
+}
+.photograph-main #divAllMedia {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px 95px;
 }
-.photograph-main .divAllMedia img,
-.photograph-main .divAllMedia video,
-.photograph-main .divAllMedia button {
+.photograph-main #divAllMedia img,
+.photograph-main #divAllMedia video,
+.photograph-main #divAllMedia button {
   height: 300px;
   width: 350px;
 }
-.photograph-main .divAllMedia .media {
+.photograph-main #divAllMedia .media {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -204,16 +224,16 @@ h1 {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-.photograph-main .divAllMedia .media .title {
+.photograph-main #divAllMedia .media .title {
   font-size: 1.5rem;
   color: #901c1c;
   margin-right: 20px;
 }
-.photograph-main .divAllMedia .media .heart-button {
+.photograph-main #divAllMedia .media .heart-button {
   height: auto;
   width: auto;
 }
-.photograph-main .divAllMedia .media .likes {
+.photograph-main #divAllMedia .media .likes {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -221,7 +241,7 @@ h1 {
   font-weight: bold;
   color: #901c1c;
 }
-.photograph-main .divAllMedia .media .likes i {
+.photograph-main #divAllMedia .media .likes i {
   margin-left: 5px;
   margin-top: 1px;
 }

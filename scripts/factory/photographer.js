@@ -2,6 +2,7 @@ import { getMediaByPhotographerId } from "../services/photographers.js";
 import { MediaFactory } from "./media.js";
 import { ContactFormModal } from "../components/contactForm.js";
 import { lightBox } from "../components/lightBox.js";
+import { SortingDOM } from "../components/mediaSorting.js";
 
 // Factory function to create photographer-related DOM elements
 export function PhotographerFactory(data) {
@@ -52,27 +53,47 @@ export function PhotographerFactory(data) {
 
   // Fetch and return photographer's media DOM elements
   const PhotographerGallery = async () => {
+    const MainContent = document.createElement("div");
+
     const divAllMedia = document.createElement("div");
-    divAllMedia.className = "divAllMedia";
+    divAllMedia.id = "divAllMedia";
 
     const allMedia = await getMediaByPhotographerId(id);
 
-    allMedia.forEach((media) => {
-      const { MediaDOM } = MediaFactory(media);
-      const PhotographerMedia = MediaDOM(name);
+    const { getMediaOrder } = MediaFactory(allMedia);
 
-      PhotographerMedia.addEventListener("click", () => {
-        lightBox(allMedia, media, name);
+    const updateSorting = (sort) => {
+      divAllMedia.innerHTML = ``;
+
+      getMediaOrder(sort).forEach((media) => {
+        const { MediaDOM } = MediaFactory(media);
+        const PhotographerMedia = MediaDOM(name);
+
+        PhotographerMedia.addEventListener("click", () => {
+          lightBox(allMedia, media, name);
+        });
+
+        if (!PhotographerMedia) {
+          return;
+        }
+
+        divAllMedia.appendChild(PhotographerMedia);
       });
+    };
 
-      if (!PhotographerMedia) {
-        return;
-      }
+    updateSorting();
 
-      divAllMedia.appendChild(PhotographerMedia);
+    const SortSelector = SortingDOM();
+
+    MainContent.appendChild(SortSelector);
+
+    SortSelector.addEventListener("change", (e) => {
+      updateSorting(e.target.value);
     });
+    
+    MainContent.appendChild(divAllMedia);
 
-    return divAllMedia;
+    return MainContent;
   };
 
   // Calculate and return likes and price
