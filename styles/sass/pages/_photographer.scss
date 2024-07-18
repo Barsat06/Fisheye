@@ -63,6 +63,11 @@
         margin-right: 20px;
       }
 
+      .heart-button{
+        height: auto;
+        width: auto;
+      }
+
       .likes {
         display: flex;
         font-size: 1.5rem;
@@ -71,7 +76,7 @@
 
         i {
           margin-left: 5px;
-          margin-top: 4px;
+          margin-top: 1px;
         }
       }
     }

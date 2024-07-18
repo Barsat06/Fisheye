@@ -78,17 +78,29 @@ export function PhotographerFactory(data) {
   // Calculate and return likes and price
   const PhotographerLikesAndPrice = async () => {
     const asideLikesPrice = document.createElement("aside");
-    const media = await getMediaByPhotographerId(id);
-    let totalLikes = 0;
 
-    media.forEach((media) => {
-      totalLikes = totalLikes + media.likes;
+    const UpdateTotalLikesPrice = () => {
+      const media = document.querySelectorAll(".likes");
+      let totalLikes = 0;
+
+      media.forEach((media) => {
+        totalLikes = totalLikes + parseInt(media.innerText);
+      });
+
+      asideLikesPrice.innerHTML = `
+      <p>${totalLikes} <i class="fa-solid fa-heart"></i></p>
+      <p>${price}€ / jour</p>
+      `;
+    };
+
+    UpdateTotalLikesPrice();
+
+    const LikeButton = document.querySelectorAll(".heart-button");
+    LikeButton.forEach((button) => {
+      button.addEventListener("click", () => {
+        UpdateTotalLikesPrice();
+      });
     });
-
-    asideLikesPrice.innerHTML = `
-    <p>${totalLikes} <i class="fa-solid fa-heart"></i></p>
-    <p>${price}€ / jour</p>
-    `;
 
     return asideLikesPrice;
   };

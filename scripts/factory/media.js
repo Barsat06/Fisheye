@@ -29,9 +29,25 @@ export function MediaFactory(media) {
     
     <div class=media>
       <p class=title>${media.title}</p>
-      <p class=likes aria-label="likes">${media.likes}<i class="fa-solid fa-heart"></i></p>
+      <button class="heart-button">
+        <p class=likes aria-label="likes">${media.likes}<i class="fa-regular fa-heart"></i></p>
+      </button>
     </div>
     `;
+
+    const HeartButton = articleMedia.querySelector(".heart-button");
+    let actualNbOfLikes = media.likes;
+    HeartButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      if (actualNbOfLikes === media.likes) {
+        actualNbOfLikes++;
+        HeartButton.innerHTML = `<p class=likes aria-label="likes">${actualNbOfLikes}<i class="fa-solid fa-heart"></i></p>`;
+      } else {
+        actualNbOfLikes--;
+        HeartButton.innerHTML = `<p class=likes aria-label="likes">${actualNbOfLikes}<i class="fa-regular fa-heart"></i></p>`;
+      }
+    });
 
     return articleMedia;
   };

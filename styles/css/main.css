@@ -209,6 +209,10 @@ h1 {
   color: #901c1c;
   margin-right: 20px;
 }
+.photograph-main .divAllMedia .media .heart-button {
+  height: auto;
+  width: auto;
+}
 .photograph-main .divAllMedia .media .likes {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -219,7 +223,7 @@ h1 {
 }
 .photograph-main .divAllMedia .media .likes i {
   margin-left: 5px;
-  margin-top: 4px;
+  margin-top: 1px;
 }
 .photograph-main aside {
   background-color: #db8876;

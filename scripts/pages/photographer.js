@@ -15,9 +15,9 @@ async function displayPhotographerMedia(photograph) {
   const { PhotographerGallery, PhotographerLikesAndPrice } =
     PhotographerFactory(photograph);
   const allMedia = await PhotographerGallery();
-  const likesAndPrice = await PhotographerLikesAndPrice();
-
   mediaSection.appendChild(allMedia);
+
+  const likesAndPrice = await PhotographerLikesAndPrice();
   mediaSection.appendChild(likesAndPrice);
 }
 
