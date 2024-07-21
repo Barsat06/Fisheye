@@ -15,7 +15,7 @@ export function lightBox(allMedia, media, name) {
     }
   });
 
-  const { MediaType } = MediaFactory(allMedia[actualIndex]);
+  const { MediaType } = MediaFactory();
 
   const BigPicture = document.createElement("div");
   BigPicture.className = "bigPicture";
@@ -23,7 +23,7 @@ export function lightBox(allMedia, media, name) {
   BigPicture.innerHTML = `
     <div>
         <button id="prevPicture" class="arrow" type="button"><img src="../../assets/icons/arrow.svg" alt="Previous image"></button>
-        <div id="mainMedia">${MediaType(name)}</div>
+        <div id="mainMedia">${MediaType(allMedia[actualIndex], name)}</div>
         <button id="nextPicture" class="arrow" type="button"><img src="../../assets/icons/arrow.svg" alt="Next image"></button>
     </div>
     <p id="mediaTitle">${media.title}</p>
@@ -51,9 +51,9 @@ export function lightBox(allMedia, media, name) {
       actualIndex--;
     }
 
-    const { MediaType } = MediaFactory(allMedia[actualIndex]);
+    const { MediaType } = MediaFactory();
     const updateMedia = document.getElementById("mainMedia");
-    updateMedia.innerHTML = MediaType(name);
+    updateMedia.innerHTML = MediaType(allMedia[actualIndex], name);
     const updateTitle = document.getElementById("mediaTitle");
     updateTitle.innerHTML = allMedia[actualIndex].title;
   };
@@ -65,9 +65,9 @@ export function lightBox(allMedia, media, name) {
       actualIndex++;
     }
 
-    const { MediaType } = MediaFactory(allMedia[actualIndex]);
+    const { MediaType } = MediaFactory();
     const updateMedia = document.getElementById("mainMedia");
-    updateMedia.innerHTML = MediaType(name);
+    updateMedia.innerHTML = MediaType(allMedia[actualIndex], name);
     const updateTitle = document.getElementById("mediaTitle");
     updateTitle.innerHTML = allMedia[actualIndex].title;
   };

@@ -1,0 +1,15 @@
+{
+  "name": "fisheye",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Barsat",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "eslint": "^9.7.0",
+    "globals": "^15.8.0"
+  }
+}

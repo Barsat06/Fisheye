@@ -2,7 +2,7 @@ import { getMediaByPhotographerId } from "../services/photographers.js";
 import { MediaFactory } from "./media.js";
 import { ContactFormModal } from "../components/contactForm.js";
 import { lightBox } from "../components/lightBox.js";
-import { SortingDOM } from "../components/mediaSorting.js";
+import { MediaSorting } from "../components/mediaSorting.js";
 
 // Factory function to create photographer-related DOM elements
 export function PhotographerFactory(data) {
@@ -54,20 +54,18 @@ export function PhotographerFactory(data) {
   // Fetch and return photographer's media DOM elements
   const PhotographerGallery = async () => {
     const MainContent = document.createElement("div");
-
     const divAllMedia = document.createElement("div");
     divAllMedia.id = "divAllMedia";
 
     const allMedia = await getMediaByPhotographerId(id);
+    const { getMediaOrder } = MediaFactory();
 
-    const { getMediaOrder } = MediaFactory(allMedia);
-
-    const updateSorting = (sort) => {
+    const createGallery = () => {
       divAllMedia.innerHTML = ``;
 
-      getMediaOrder(sort).forEach((media) => {
+      getMediaOrder(allMedia, "popular").forEach((media) => {
         const { MediaDOM } = MediaFactory(media);
-        const PhotographerMedia = MediaDOM(name);
+        const PhotographerMedia = MediaDOM(media, name);
 
         PhotographerMedia.addEventListener("click", () => {
           lightBox(allMedia, media, name);
@@ -81,24 +79,19 @@ export function PhotographerFactory(data) {
       });
     };
 
-    updateSorting();
+    createGallery();
 
-    const SortSelector = SortingDOM();
-
+    const SortSelector = MediaSorting(allMedia, name, data);
     MainContent.appendChild(SortSelector);
-
-    SortSelector.addEventListener("change", (e) => {
-      updateSorting(e.target.value);
-    });
-    
     MainContent.appendChild(divAllMedia);
 
     return MainContent;
   };
 
   // Calculate and return likes and price
-  const PhotographerLikesAndPrice = async () => {
+  const PhotographerLikesAndPrice = () => {
     const asideLikesPrice = document.createElement("aside");
+    asideLikesPrice.id = "asideLikesPrice";
 
     const UpdateTotalLikesPrice = () => {
       const media = document.querySelectorAll(".likes");
