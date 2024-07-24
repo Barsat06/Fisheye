@@ -67,13 +67,6 @@ export function MediaSorting(allMedia, name, data) {
       : "<i class='fa-solid  fa-angle-up'></i>";
   });
 
-  document.addEventListener("click", (event) => {
-    if (!sortButton.contains(event.target)) {
-      sortMenu.style.display = "none";
-      sortButton.querySelector(".arrow").innerHTML = "<i class='fa-solid fa-angle-down'></i>";
-    }
-  });
-
   updateSortMenu("Popularité");
 
   function updateGallery(sort) {
