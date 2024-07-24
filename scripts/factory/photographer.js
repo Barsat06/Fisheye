@@ -63,7 +63,7 @@ export function PhotographerFactory(data) {
     const createGallery = () => {
       divAllMedia.innerHTML = ``;
 
-      getMediaOrder(allMedia, "popular").forEach((media) => {
+      getMediaOrder(allMedia, "Popularité").forEach((media) => {
         const { MediaDOM } = MediaFactory(media);
         const PhotographerMedia = MediaDOM(media, name);
 
@@ -98,7 +98,7 @@ export function PhotographerFactory(data) {
       let totalLikes = 0;
 
       media.forEach((media) => {
-        totalLikes = totalLikes + parseInt(media.innerText);
+        totalLikes = totalLikes + parseInt(media.innerText, 10);
       });
 
       asideLikesPrice.innerHTML = `

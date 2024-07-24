@@ -42,27 +42,64 @@
 .photograph-main {
   margin-bottom: 100px;
 
-  #sorting {
-    margin: 10px 0px 25px 0px;
+  #sort-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
 
-    label {
+    p{
       font-size: 1.125em;
       font-weight: bold;
+      color: black;
       margin-right: 25px;
     }
 
-    select {
+    .sort-button {
       background-color: $primary-bg;
+      color: white;
+      border: none;
+      padding: 15px 20px;
       font-size: 1.125em;
       font-weight: bold;
-      color: white;
-      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       border-radius: 5px;
+      width: 170px;
+    }
 
-      option {
-        padding: 20px;
-        font-weight: bold;
-      }
+    .sort-button:focus {
+      border-radius: 5px 5px 0px 0px;
+    }
+
+    .sort-button .arrow {
+      margin-left: 25px;
+    }
+
+    .sort-menu {
+      display: none;
+      position: absolute;
+      background-color: $primary-bg;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      width: 100%;
+      border-radius: 0px 0px 5px 5px;
+      width: 170px;
+    }
+    
+    .sort-menu .sort-option {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      color: white;
+      padding: 15px 10px;
+      cursor: pointer;
+      border-top: 1px solid white;
+      font-size: 1.125em;
+      font-weight: bold;
     }
   }
 

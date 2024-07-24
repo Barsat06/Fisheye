@@ -24,12 +24,12 @@ export function MediaFactory() {
 
     const articleMedia = document.createElement("article");
     articleMedia.innerHTML = `
-    <button aria-label="Afficher en grand">${typeDOM}</button>
+    <button aria-label="Afficher en grand ${media.title}">${typeDOM}</button>
     
-    <div class=media>
-      <p class=title>${media.title}</p>
+    <div class="media">
+      <p class="title">${media.title}</p>
       <button id="${media.id}" class="heart-button">
-        <p class=likes aria-label="likes">${media.likes}<i class="fa-regular fa-heart"></i></p>
+        <p class=likes aria-label="Ajouter un like">${media.likes}<i class="fa-regular fa-heart"></i></p>
       </button>
     </div>
     `;
@@ -39,13 +39,13 @@ export function MediaFactory() {
     
     const addLike = () => {
       actualNbOfLikes++;
-      HeartButton.innerHTML = `<p class="likes" aria-label="likes">${actualNbOfLikes}<i class="fa-solid fa-heart"></i></p>`;
+      HeartButton.innerHTML = `<p class="likes" aria-label="Enlever mon like">${actualNbOfLikes}<i class="fa-solid fa-heart"></i></p>`;
       HeartButton.classList.add("liked");
     };
 
     const removeLike = () => {
       actualNbOfLikes--;
-      HeartButton.innerHTML = `<p class="likes" aria-label="likes">${actualNbOfLikes}<i class="fa-regular fa-heart"></i></p>`;
+      HeartButton.innerHTML = `<p class="likes" aria-label="Ajouter un like">${actualNbOfLikes}<i class="fa-regular fa-heart"></i></p>`;
       HeartButton.classList.remove("liked");
     };
 
@@ -70,13 +70,13 @@ export function MediaFactory() {
   };
 
   const getMediaOrder = (allMedia, sort) => {
-    if (sort === undefined || sort === "popular") {
+    if (sort === undefined || sort === "Popularité") {
       return allMedia.sort((a, b) => b.likes - a.likes);
     }
-    if (sort === "date") {
+    if (sort === "Date") {
       return allMedia.sort((a, b) => b.date.localeCompare(a.date));
     }
-    if (sort === "title") {
+    if (sort === "Titre") {
       return allMedia.sort((a, b) => a.title.localeCompare(b.title));
     }
   };
